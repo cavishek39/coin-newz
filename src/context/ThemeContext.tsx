@@ -9,7 +9,7 @@ import { Theme } from "../types/theme";
 
 type ThemeContextProps = {
   theme: Theme;
-  onToggleTheme: React.Dispatch<React.SetStateAction<string>>;
+  onToggleTheme: React.Dispatch<React.SetStateAction<Theme>>;
 };
 
 type ThemeProviderProps = {
@@ -39,33 +39,25 @@ export const ThemeContext = createContext<ThemeContextProps>({
 });
 
 export const ThemeProvider = ({
-  initialTheme,
+  initialTheme = "dark",
   children,
 }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    handleSetTheme(theme);
-  }, [theme]);
-
-  const handleSetTheme = (theme: Theme) => {
     const root = window.document.documentElement;
     const isDark = theme === "dark";
 
     root.classList.remove(isDark ? "light" : "dark");
     root.classList.add(theme);
 
-    localStorage.setItem("color-theme", theme);
-  };
-
-  if (initialTheme) {
-    handleSetTheme(initialTheme);
-  }
-
-  const onToggleTheme = () => setTheme;
+    if (typeof window !== "undefined") {
+      localStorage.setItem("color-theme", theme);
+    }
+  }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, onToggleTheme }}>
+    <ThemeContext.Provider value={{ theme, onToggleTheme: setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
