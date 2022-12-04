@@ -8,11 +8,14 @@ import "../styles/globals.css";
 import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
 import Navbar from "../components/navbar";
 import { useContext, useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  // Create a client
+  const queryClient = new QueryClient();
   const { theme } = useContext(ThemeContext);
   const [showing, setShowing] = useState(false);
 
@@ -31,7 +34,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <SessionProvider session={session}>
         <ThemeProvider initialTheme={theme}>
           <Navbar />
-          <Component {...pageProps} />
+          <QueryClientProvider client={queryClient}>
+            <Component {...pageProps} />
+          </QueryClientProvider>
         </ThemeProvider>
       </SessionProvider>
     );
