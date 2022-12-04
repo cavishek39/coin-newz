@@ -1,37 +1,53 @@
-import React from "react";
-import { AiOutlineStar } from "react-icons/ai";
-import { Sparklines, SparklinesLine } from "react-sparklines";
+import React, { useState } from "react";
 import CoinItem from "./coin-item";
 
 type CoinSearchProps = {
   coins: any;
 };
+
 const CoinSearch = ({ coins }: CoinSearchProps) => {
+  const [searchText, setSearchText] = useState<string>("");
+
+  const filteredArray = () => {
+    return coins.filter((coin) => {
+      if (searchText === "") {
+        return coins;
+      } else if (coin.name.toLowerCase().includes(searchText.toLowerCase())) {
+        return coins;
+      }
+    });
+  };
+
   return (
-    <div>
-      <div>
-        <h1>Search Crypto</h1>
+    <div className="rounded-div my-4">
+      <div className="flex flex-col justify-between pt-4 pb-6 text-center md:flex-row md:text-right">
+        <h1 className="my-2 text-2xl font-bold">Search Crypto</h1>
         <form>
-          <input type="text" placeholder="Search a coin" />
+          <input
+            type="text"
+            className="w-full rounded-2xl border-input bg-primary px-4 py-2 shadow-xl"
+            placeholder="Search a coin"
+            onChange={(e) => setSearchText(e.target.value)}
+          />
         </form>
       </div>
 
-      <table>
-        <thead>
+      <table className="w-full border-collapse text-center">
+        <thead className="border-b">
           <tr>
             <th></th>
-            <th>#</th>
-            <th>Coin</th>
+            <th className="px-4">#</th>
+            <th className="text-left">Coin</th>
             <th></th>
             <th>Price</th>
             <th>24h</th>
-            <th>24h Volume</th>
-            <th>Mkt</th>
+            <th className="hidden md:table-cell">24h Volume</th>
+            <th className="hidden sm:table-cell">Mkt</th>
             <th>Last 7 days</th>
           </tr>
         </thead>
         <tbody>
-          {coins.map((coin: any) => (
+          {filteredArray().map((coin: any) => (
             <CoinItem coin={coin} key={coin?.id} />
           ))}
         </tbody>
