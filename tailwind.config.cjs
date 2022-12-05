@@ -18,7 +18,7 @@ module.exports = {
       borderColor: {
         primary: "var(--color-bg-primary)",
         secondary: "var(--color-bg-secondary)",
-        input: "var(--color-text-accent)",
+        input: "var(--color-bg-accent)",
         accent: "var(--color-text-accent)",
       },
     },

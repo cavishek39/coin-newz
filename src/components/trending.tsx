@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 const TRENDING_COINS_URL = "https://api.coingecko.com/api/v3/search/trending";
 
@@ -24,27 +25,34 @@ const Trending = () => {
             key={item?.coin_id}
             className="rounded-div flex justify-between p-4 duration-300 ease-in-out hover:scale-105"
           >
-            <div className="flex w-full items-center justify-between">
-              <div className="flex">
-                <img
-                  className="rounded-full pr-4"
-                  src={item?.small}
-                  alt={item?.small}
-                />
-                <div>
-                  <p className="font-bold">{item?.name}</p>
-                  <p>{item?.symbol}</p>
+            <Link
+              href={{
+                pathname: "coin/[id]",
+                query: { id: item?.name.toLowerCase() },
+              }}
+            >
+              <div className="flex w-full items-center justify-between">
+                <div className="flex">
+                  <img
+                    className="rounded-full pr-4"
+                    src={item?.small}
+                    alt={item?.small}
+                  />
+                  <div>
+                    <p className="font-bold">{item?.name}</p>
+                    <p>{item?.symbol}</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <img
+                    className="m-2 w-4"
+                    src="https://cdn.pixabay.com/photo/2013/12/08/12/12/bitcoin-225079__340.png"
+                    alt="/"
+                  />
+                  <p>{item?.price_btc?.toFixed(7)}</p>
                 </div>
               </div>
-              <div className="flex items-center">
-                <img
-                  className="m-2 w-4"
-                  src="https://cdn.pixabay.com/photo/2013/12/08/12/12/bitcoin-225079__340.png"
-                  alt="/"
-                />
-                <p>{item?.price_btc?.toFixed(7)}</p>
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

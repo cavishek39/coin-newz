@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { Sparklines, SparklinesLine } from "react-sparklines";
@@ -18,19 +19,26 @@ const CoinItem = ({ coin }: CoinItemProps) => {
       </td>
       <td>{coin.market_cap_rank}</td>
       <td>
-        <div className="flex items-center">
-          <img
-            className="mr-2 w-6 rounded-full"
-            src={coin.image}
-            alt={coin.id}
-            style={{
-              width: "30px",
-              height: "30px",
-              borderRadius: "15px",
-            }}
-          />
-          <p className="hidden sm:table-cell">{coin.name}</p>
-        </div>
+        <Link
+          href={{
+            pathname: "coin/[id]",
+            query: { id: coin?.name.toLowerCase() },
+          }}
+        >
+          <div className="flex items-center">
+            <img
+              className="mr-2 w-6 rounded-full"
+              src={coin.image}
+              alt={coin.id}
+              style={{
+                width: "30px",
+                height: "30px",
+                borderRadius: "15px",
+              }}
+            />
+            <p className="hidden sm:table-cell">{coin.name}</p>
+          </div>
+        </Link>
       </td>
       <td>{coin.symbol?.toUpperCase()}</td>
       <td>{`₹${coin.current_price?.toLocaleString()}`}</td>

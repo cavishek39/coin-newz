@@ -17,11 +17,11 @@ type ThemeProviderProps = {
   children: ReactNode;
 };
 
-const getInitialTheme = (): Theme => {
+const getInitialTheme = () => {
   if (typeof window !== "undefined" && window.localStorage) {
     const storedPref = window.localStorage.getItem("color-theme");
     if (typeof storedPref === "string") {
-      return storedPref as Theme;
+      return storedPref;
     }
     const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -42,18 +42,26 @@ export const ThemeProvider = ({
   initialTheme = "dark",
   children,
 }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<any>(getInitialTheme);
 
-  useEffect(() => {
+  const rawSetTheme = (theme: Theme) => {
     const root = window.document.documentElement;
-    const isDark = theme === "dark";
+    const isDark = initialTheme === "dark";
 
     root.classList.remove(isDark ? "light" : "dark");
-    root.classList.add(theme);
+    root.classList.add(initialTheme);
 
     if (typeof window !== "undefined") {
       localStorage.setItem("color-theme", theme);
     }
+  };
+
+  if (initialTheme) {
+    rawSetTheme(initialTheme);
+  }
+
+  useEffect(() => {
+    rawSetTheme(initialTheme);
   }, [theme]);
 
   return (
