@@ -1,15 +1,13 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
-type TrendingProps = {};
-
-const TRENDING_COINS_API = "https://api.coingecko.com/api/v3/search/trending";
+const TRENDING_COINS_URL = "https://api.coingecko.com/api/v3/search/trending";
 
 const Trending = () => {
   const { data: trendingData, isLoading } = useQuery({
     queryKey: ["trending"],
     queryFn: () =>
-      fetch(TRENDING_COINS_API).then((response) => response.json()),
+      fetch(TRENDING_COINS_URL).then((response) => response.json()),
     // onSuccess: (result) => {
     //   console.log(`Trending data ${JSON.stringify(result)}`);
     // },
