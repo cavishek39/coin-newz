@@ -1,8 +1,13 @@
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { Sparklines, SparklinesLine } from "react-sparklines";
+import { Coin } from "../types/coin";
 
-const CoinItem = ({ coin }: any) => {
+type CoinItemProps = {
+  coin: Coin;
+};
+
+const CoinItem = ({ coin }: CoinItemProps) => {
   return (
     <tr
       key={coin.market_cap_rank?.toString()}
@@ -28,7 +33,7 @@ const CoinItem = ({ coin }: any) => {
         </div>
       </td>
       <td>{coin.symbol?.toUpperCase()}</td>
-      <td>{`₹${coin.current_price.toLocaleString()}`}</td>
+      <td>{`₹${coin.current_price?.toLocaleString()}`}</td>
       <td>
         {coin.price_change_percentage_24h > 0 ? (
           <p className="text-green-600">

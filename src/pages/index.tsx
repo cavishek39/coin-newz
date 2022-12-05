@@ -1,31 +1,33 @@
 import { type NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
 
 import { trpc } from "../utils/trpc";
-
-import { useQuery } from "@tanstack/react-query";
 import CoinSearch from "../components/coin-search";
-import axios from "axios";
+import { Coin } from "../types/coin";
+import Trending from "../components/trending";
 
 const API = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=10&page=1&sparkline=true`;
 
 const Home: NextPage = () => {
   // const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
 
-  const { data: coinsData, isLoading } = useQuery({
+  const { data: coinsData, isLoading } = useQuery<Coin[]>({
     queryKey: ["coins"],
     queryFn: () => fetch(API).then((response) => response.json()),
+    onSuccess: (result) => {
+      // console.log("Data as result", result);
+    },
   });
-
-  // console.log("Data as result", data);
 
   if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <div>
-      <CoinSearch coins={coinsData} />
+      {!!coinsData && coinsData?.length > 0 && (
+        <CoinSearch coins={coinsData as Coin[]} />
+      )}
+      <Trending />
     </div>
   );
 };

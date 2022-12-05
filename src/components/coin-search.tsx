@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Coin } from "../types/coin";
 import CoinItem from "./coin-item";
 
 type CoinSearchProps = {
-  coins: any;
+  coins: Coin[];
 };
 
 const CoinSearch = ({ coins }: CoinSearchProps) => {
@@ -47,7 +48,7 @@ const CoinSearch = ({ coins }: CoinSearchProps) => {
           </tr>
         </thead>
         <tbody>
-          {filteredArray().map((coin: any) => (
+          {filteredArray().map((coin: Coin) => (
             <CoinItem coin={coin} key={coin?.id} />
           ))}
         </tbody>
