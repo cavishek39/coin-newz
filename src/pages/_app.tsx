@@ -9,6 +9,7 @@ import Navbar from "../components/navbar";
 import { useContext, useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
+import Footer from "../components/footer";
 // import useTheme, { ThemeProvider } from "next-theme";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -37,6 +38,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <QueryClientProvider client={queryClient}>
             <Navbar />
             <Component {...pageProps} />
+            <Footer />
           </QueryClientProvider>
         </SessionProvider>
       </ThemeProvider>
