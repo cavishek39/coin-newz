@@ -1,14 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import { AiFillLock, AiOutlineMail } from "react-icons/ai";
-import { AuthShowcase } from ".";
-import Login from "./login";
 
-const SignUp = () => {
+const SignIn = () => {
   return (
     <div>
       <div className="mx-auto min-h-[600px] max-w-[400px] px-4 py-20">
-        <h1 className="text-2xl font-bold">Sign Up</h1>
+        <h1 className="text-2xl font-bold">Sign In</h1>
         <form>
           <div className="my-4">
             <label>Email</label>
@@ -37,11 +35,11 @@ const SignUp = () => {
           </button>
         </form>
         <p className="my-4">
-          Already have an account? <Link href={"/signin"}>Sign in</Link>
+          Don't have an account? <Link href={"/signup"}>Sign up</Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;

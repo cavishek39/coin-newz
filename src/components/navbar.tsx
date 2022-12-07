@@ -19,11 +19,11 @@ const Navbar = () => {
         <ThemeToggler />
       </div>
       <div className="hidden md:block">
-        <Link href={"/"} className="hover:text:accent p-4">
+        <Link href={"/signin"} className="hover:text:accent p-4">
           Sign in
         </Link>
         <Link
-          href={"/"}
+          href={"/signup"}
           className="ml-2 rounded-2xl bg-button px-5 py-2 text-btnText shadow-lg hover:shadow-2xl"
         >
           Sign up
