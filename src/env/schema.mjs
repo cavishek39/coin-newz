@@ -24,6 +24,12 @@ export const serverSchema = z.object({
   GITHUB_ID: z.string(),
   GITHUB_SECRET: z.string(),
   JWT_SECRET: z.string(),
+  REACT_APP_FIREBASE_API_KEY: z.string(),
+  REACT_APP_FIREBASE_AUTH_DOMAIN: z.string(),
+  REACT_APP_FIREBASE_PROJECT_ID: z.string(),
+  REACT_APP_FIREBASE_STORAGE_BUCKET: z.string(),
+  REACT_APP_FIREBASE_MESSAGING_SENDER: z.string(),
+  REACT_APP_FIREBASE_ID: z.string(),
 });
 
 /**
