@@ -10,6 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
 import Footer from "../components/footer";
+import { AuthContextProvider } from "../context/AuthContext";
 // import useTheme, { ThemeProvider } from "next-theme";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -34,13 +35,15 @@ const MyApp: AppType<{ session: Session | null }> = ({
   } else {
     return (
       <ThemeProvider initialTheme={theme}>
-        <SessionProvider session={session}>
-          <QueryClientProvider client={queryClient}>
-            <Navbar />
-            <Component {...pageProps} />
-            <Footer />
-          </QueryClientProvider>
-        </SessionProvider>
+        <AuthContextProvider>
+          <SessionProvider session={session}>
+            <QueryClientProvider client={queryClient}>
+              <Navbar />
+              <Component {...pageProps} />
+              <Footer />
+            </QueryClientProvider>
+          </SessionProvider>
+        </AuthContextProvider>
       </ThemeProvider>
     );
   }
