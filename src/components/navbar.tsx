@@ -18,7 +18,7 @@ const Navbar = () => {
     try {
       logout();
       router.replace("/");
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };

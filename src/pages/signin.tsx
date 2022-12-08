@@ -13,7 +13,7 @@ const SignIn = () => {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setError("");
 
@@ -26,7 +26,7 @@ const SignIn = () => {
         setEmail("");
         setPassword("");
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       console.error(err.message);
     }

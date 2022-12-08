@@ -23,14 +23,19 @@ type UserContextProps = {
   logout: () => Promise<void>;
 };
 
-const UserContext = createContext<UserContextProps>({});
+const UserContext = createContext<UserContextProps | any>({
+  logout: () => {},
+  signIn: () => {},
+  signUp: () => {},
+  user: {},
+});
 
 type AuthContextProviderProps = {
   children: ReactNode;
 };
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const [user, setUser] = useState<User | null>({});
+  const [user, setUser] = useState<User | null>();
 
   const signUp = (email: string, password: string) => {
     createUserWithEmailAndPassword(auth, email, password);

@@ -21,11 +21,11 @@ const SavedCoin = () => {
     if (!coinId) return;
 
     try {
-      const result = coins?.filter((coin) => coin.id !== coinId);
+      const result = coins?.filter((coin: any) => coin?.id !== coinId);
       await updateDoc(coinPath, {
         watchList: result,
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
@@ -48,7 +48,7 @@ const SavedCoin = () => {
             </tr>
           </thead>
           <tbody>
-            {coins.map((coin) => (
+            {coins.map((coin: any) => (
               <tr key={coin?.id} className="h-[60px] overflow-hidden">
                 <td>{coin?.rank}</td>
                 <td>
