@@ -1,6 +1,6 @@
 # CoinNewz
 
-(https://coin-newz-cavishek39.vercel.app/)
+https://coin-newz-cavishek39.vercel.app/
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
