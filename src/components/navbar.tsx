@@ -26,11 +26,9 @@ const Navbar = () => {
   return (
     <div className="rounded-div flex h-20 items-center justify-between font-bold">
       <Link href={"/"} className="text-2xl">
-        Cryptobase
+        CoinNewz
       </Link>
-      <div className="hidden md:block">
-        <ThemeToggler />
-      </div>
+      <div className="hidden md:block">{/* <ThemeToggler /> */}</div>
       {!!user?.email ? (
         <div>
           <Link href={"/account"} className="hover:text:accent p-4">
@@ -63,30 +61,34 @@ const Navbar = () => {
       <div
         className={
           showNavIcon
-            ? "fixed top-20 left-0 z-10 flex h-[90%] w-full flex-col items-center justify-between bg-primary duration-300 ease-in md:hidden"
+            ? "fixed top-20 left-0 z-10 flex h-[90%] w-full flex-col items-center justify-between bg-white duration-300 ease-in md:hidden"
             : "fixed left-[-100%] top-20 flex h-[90%] flex-col items-center justify-between duration-300 ease-in"
         }
       >
         <ul className="w-full p-4">
           <li className="border-b py-6">
-            <Link href={"/"}>Home</Link>
+            <Link href={"/"} onClick={handleNav}>
+              Home
+            </Link>
           </li>
           <li className="border-b py-6">
-            <Link href={"/"}>Account</Link>
+            <Link href={"/"} onClick={handleNav}>
+              Account
+            </Link>
           </li>
-          <li className="py-6">
-            <ThemeToggler />
-          </li>
+          <li className="py-6">{/* <ThemeToggler /> */}</li>
         </ul>
         <div className="flex w-full flex-col p-4">
           <Link
             href={"/signin"}
+            onClick={handleNav}
             className="my-2 w-full rounded-2xl border border-secondary bg-primary p-3 text-primary shadow-xl"
           >
             Sign in
           </Link>
           <Link
             href={"/signin"}
+            onClick={handleNav}
             className="my-2 w-full rounded-2xl bg-button p-3 text-btnText shadow-xl"
           >
             Sign up

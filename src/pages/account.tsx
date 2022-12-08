@@ -1,11 +1,18 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import SavedCoin from "../components/saved-coin";
 import { useUserAuth } from "../context/AuthContext";
 
 const Account = () => {
   const { logout, user } = useUserAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    // checks if the user is authenticated
+    if (!user?.email) {
+      router.push("/signup");
+    }
+  }, [user?.email]);
 
   const handleSignOut = async () => {
     try {

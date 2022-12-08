@@ -32,7 +32,7 @@ const Footer = () => {
           <div className="flex w-full justify-end">
             <div className="relative w-full py-4 md:w-[300px]">
               <div className=" mt-4 flex justify-center py-4 md:justify-end md:py-0 md:pb-4">
-                <ThemeToggler />
+                {/* <ThemeToggler /> */}
               </div>
 
               <p className="text-center md:text-right">
