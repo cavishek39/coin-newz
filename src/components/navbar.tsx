@@ -2,12 +2,25 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ThemeToggler from "./theme-toggler";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { useUserAuth } from "../context/AuthContext";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const { user, logout } = useUserAuth();
+  const router = useRouter();
   const [showNavIcon, setShowNavIcon] = useState<boolean>(false);
 
   const handleNav = () => {
     setShowNavIcon(!showNavIcon);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      logout();
+      router.replace("/");
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
@@ -18,17 +31,26 @@ const Navbar = () => {
       <div className="hidden md:block">
         <ThemeToggler />
       </div>
-      <div className="hidden md:block">
-        <Link href={"/signin"} className="hover:text:accent p-4">
-          Sign in
-        </Link>
-        <Link
-          href={"/signup"}
-          className="ml-2 rounded-2xl bg-button px-5 py-2 text-btnText shadow-lg hover:shadow-2xl"
-        >
-          Sign up
-        </Link>
-      </div>
+      {!!user?.email ? (
+        <div>
+          <Link href={"/account"} className="hover:text:accent p-4">
+            Account
+          </Link>
+          <button onClick={handleSignOut}>Sign out</button>
+        </div>
+      ) : (
+        <div className="hidden md:block">
+          <Link href={"/signin"} className="hover:text:accent p-4">
+            Sign in
+          </Link>
+          <Link
+            href={"/signup"}
+            className="ml-2 rounded-2xl bg-button px-5 py-2 text-btnText shadow-lg hover:shadow-2xl"
+          >
+            Sign up
+          </Link>
+        </div>
+      )}
       {/* Menu Icon */}
       <div className="z-10 block cursor-pointer md:hidden" onClick={handleNav}>
         {showNavIcon ? (

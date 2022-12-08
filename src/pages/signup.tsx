@@ -26,6 +26,7 @@ const SignUp = () => {
       console.error(err.message);
     }
   };
+
   return (
     <div>
       <div className="mx-auto min-h-[600px] max-w-[400px] px-4 py-20">
