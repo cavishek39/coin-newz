@@ -1,28 +1,30 @@
-# Create T3 App
+# CoinNewz
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+https://coin-newz-cavishek39.vercel.app/
 
-## What's next? How do I make an app with this?
+![image](https://user-images.githubusercontent.com/71460522/206668502-b48801bb-897d-47b3-b467-5e6fc62410ba.png)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## What's the purpose of this application?
+
+To check list of all the crytpo coins and their instant market information under the hood. With realtime update.
+
+## Tech Stack
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- [Firebase](https://firebase.google.com)
+- [TypeScript](https://www.typescriptlang.org/)
 
-## Learn More
+## Steps to run this application locally
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- `git clone git@github.com:cavishek39/coin-newz.git`.
+- `npm install` or `yarn install` or `pnpm install`.
+- `npm start` or `yarn dev` or `pnpm dev`.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Authored by
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Avishek Chatterjee 
+- Reach out to me on (cavishek39@gmail.com).
+- Or hit me up on LinkedIn @ (https://www.linkedin.com/in/avishek-c-211855124/).
