@@ -2,6 +2,9 @@
 
 https://coin-newz-cavishek39.vercel.app/
 
+![image](https://user-images.githubusercontent.com/71460522/206668502-b48801bb-897d-47b3-b467-5e6fc62410ba.png)
+
+
 ## What's the purpose of this application?
 
 To check list of all the crytpo coins and their instant market information under the hood. With realtime update.
