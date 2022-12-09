@@ -1,29 +1,42 @@
+import Link from "next/link";
 import React from "react";
-import ThemeToggler from "./theme-toggler";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { FaFacebookF, FaGithub, FaTiktok, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="rounded-div mt-8 pt-8 text-primary">
-      <div className="grid md:grid-cols-2">
-        <div className="justify-evenlyw-full flex uppercase md:max-w-[300px]">
+    <div className="rounded-div m-8 pt-8 text-primary">
+      <h1 className="py-4 px-4 text-2xl font-bold">CoinNewz</h1>
+      <div className="grid px-4 md:grid-cols-2">
+        <div className="flex w-full justify-between uppercase md:max-w-[300px]">
           <div>
-            <h2 className="font-bold">Support</h2>
             <ul>
-              <li className="py-2 text-sm">Help Center</li>
-              <li className="py-2 text-sm">Contact Us</li>
-              <li className="py-2 text-sm">API Status</li>
-              <li className="py-2 text-sm">Documentation</li>
+              <li className="py-2 text-xs font-semibold">
+                <Link href={"https://www.linkedin.com/in/avishek-c-211855124/"}>
+                  Contact Me
+                </Link>
+              </li>
+              <li className="py-2 text-xs font-semibold">
+                <Link href={"https://www.coingecko.com/en/api/documentation"}>
+                  Documentation
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
-            <h2 className="font-bold">Info</h2>
             <ul>
-              <li>About Us</li>
-              <li>Careers</li>
-              <li>Invest</li>
-              <li>Legal</li>
+              <li className="py-2 text-xs font-semibold">
+                <Link href={"/https://github.com/cavishek39"}>About Me</Link>
+              </li>
+              <li className="py-2 text-xs font-semibold">
+                <Link
+                  href={
+                    "https://www.google.com/search?q=crypto+investment&rlz=1C1CHBF_enIN1028IN1028&oq=crypto+inv&aqs=chrome.0.0i433i512j0i512l3j0i20i263i512j0i512j0i20i263i512j0i512l3.4891j0j7&sourceid=chrome&ie=UTF-8"
+                  }
+                >
+                  Invest
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -35,13 +48,13 @@ const Footer = () => {
                 {/* <ThemeToggler /> */}
               </div>
 
-              <p className="text-center md:text-right">
-                Sign up for crypto news
+              <p className="text-center font-semibold md:text-right">
+                Sign up for CryptoNewz
               </p>
               <div className="py-4">
                 <form>
                   <input
-                    className="mr-2 w-full rounded-2xl border border-input bg-primary p-2 shadow-2xl md:w-auto"
+                    className="mr-2 w-full rounded-xl border border-input bg-primary p-2 shadow-2xl md:w-auto"
                     type="email"
                     placeholder="Enter your email"
                   />
@@ -54,14 +67,14 @@ const Footer = () => {
                 <AiOutlineInstagram />
                 <FaTiktok />
                 <FaFacebookF />
-                <FaGithub />
+                <FaGithub href="/https://github.com/cavishek39" />
                 <FaTwitter />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <p className="py-4 text-center">Powered by Coin Gecko</p>
+      <p className="py-4 text-center font-semibold">Powered by Coin Gecko</p>
     </div>
   );
 };
